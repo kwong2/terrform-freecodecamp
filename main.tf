@@ -37,6 +37,11 @@ resource "aws_route_table" "r" {
   }
 }
 
+resource "aws_route_table_association" "a" {
+  subnet_id      = aws_subnet.prod-subnet.id
+  route_table_id = aws_route_table.r.id
+}
+
 resource "aws_subnet" "priv-subnet" {
   vpc_id     = aws_vpc.first-VPC.id
   cidr_block = "10.25.2.0/24"
