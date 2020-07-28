@@ -19,6 +19,24 @@ resource "aws_internet_gateway" "gw" {
   }
 }
 
+resource "aws_route_table" "r" {
+  vpc_id = aws_vpc.first-VPC.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = "${aws_internet_gateway.gw.id}"
+  }
+
+  # route {
+  #   ipv6_cidr_block        = "::/0"
+  #   egress_only_gateway_id = "${aws_egress_only_internet_gateway.foo.id}"
+  # }
+
+  tags = {
+    Name = "main"
+  }
+}
+
 resource "aws_subnet" "priv-subnet" {
   vpc_id     = aws_vpc.first-VPC.id
   cidr_block = "10.25.2.0/24"
