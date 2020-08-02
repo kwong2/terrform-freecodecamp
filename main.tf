@@ -2,6 +2,14 @@ provider "aws" {
   region = "us-east-2"
 }
 
+resource "aws_iam_user" "lb" {
+  name = "terraform.test"
+
+  tags = {
+    Name = "tag-value"
+  }
+}
+
 # resource "aws_subnet" "prod-subnet" {
 #   vpc_id     = aws_vpc.first-VPC.id
 #   cidr_block = "10.25.1.0/24"
