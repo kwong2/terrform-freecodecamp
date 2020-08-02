@@ -2,62 +2,62 @@ provider "aws" {
   region = "us-east-2"
 }
 
-resource "aws_subnet" "prod-subnet" {
-  vpc_id     = aws_vpc.first-VPC.id
-  cidr_block = "10.25.1.0/24"
+# resource "aws_subnet" "prod-subnet" {
+#   vpc_id     = aws_vpc.first-VPC.id
+#   cidr_block = "10.25.1.0/24"
 
-  tags = {
-    Name = "prod-subnet"
-  }
-}
+#   tags = {
+#     Name = "prod-subnet"
+#   }
+# }
 
-resource "aws_internet_gateway" "gw" {
-  vpc_id = aws_vpc.first-VPC.id
+# resource "aws_internet_gateway" "gw" {
+#   vpc_id = aws_vpc.first-VPC.id
 
-  tags = {
-    Name = "main"
-  }
-}
+#   tags = {
+#     Name = "main"
+#   }
+# }
 
-resource "aws_route_table" "r" {
-  vpc_id = aws_vpc.first-VPC.id
+# resource "aws_route_table" "r" {
+#   vpc_id = aws_vpc.first-VPC.id
 
-  route {
-    cidr_block = "0.0.0.0/0"
-    gateway_id = "${aws_internet_gateway.gw.id}"
-  }
+#   route {
+#     cidr_block = "0.0.0.0/0"
+#     gateway_id = "${aws_internet_gateway.gw.id}"
+#   }
 
   # route {
   #   ipv6_cidr_block        = "::/0"
   #   egress_only_gateway_id = "${aws_egress_only_internet_gateway.foo.id}"
   # }
 
-  tags = {
-    Name = "main"
-  }
-}
+#   tags = {
+#     Name = "main"
+#   }
+# }
 
-resource "aws_route_table_association" "a" {
-  subnet_id      = aws_subnet.prod-subnet.id
-  route_table_id = aws_route_table.r.id
-}
+# resource "aws_route_table_association" "a" {
+#   subnet_id      = aws_subnet.prod-subnet.id
+#   route_table_id = aws_route_table.r.id
+# }
 
-resource "aws_subnet" "priv-subnet" {
-  vpc_id     = aws_vpc.first-VPC.id
-  cidr_block = "10.25.2.0/24"
+# resource "aws_subnet" "priv-subnet" {
+#   vpc_id     = aws_vpc.first-VPC.id
+#   cidr_block = "10.25.2.0/24"
 
-  tags = {
-    Name = "priv-subnet"
-  }
-}
+#   tags = {
+#     Name = "priv-subnet"
+#   }
+# }
 
-resource "aws_vpc" "first-VPC" {
-  cidr_block = "10.25.0.0/16"
+# resource "aws_vpc" "first-VPC" {
+#   cidr_block = "10.25.0.0/16"
 
-  tags = {
-    Name = "Kevin-Terraform-VPC"
-  }
-}
+#   tags = {
+#     Name = "Kevin-Terraform-VPC"
+#   }
+# }
 
 
 
