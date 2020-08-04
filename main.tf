@@ -1,5 +1,6 @@
 provider "aws" {
-  region = "us-east-2"
+  region = "us-east-1"
+  version = "2.7"
 }
 
 resource "aws_iam_user" "lb" {
@@ -69,15 +70,15 @@ resource "aws_iam_user" "lb" {
 
 
 
-# resource "aws_instance" "my-first-terraform-instance" {
-#   ami           = "ami-0ac80df6eff0e70b5"
-#   instance_type = "t2.micro"
+resource "aws_instance" "my-first-terraform-instance" {
+  ami           = "ami-0ac80df6eff0e70b5"
+  instance_type = "t2.micro"
 
-#   tags = {
-#     Name = "Kevin-Testing-Terraform"
-#     OS = "Ubuntu"
-#   }
-# }
+  tags = {
+    Name = "Kevin-Testing-Terraform"
+    OS = "Ubuntu"
+  }
+}
 
 
 
