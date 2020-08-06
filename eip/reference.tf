@@ -13,5 +13,5 @@ resource "aws_eip" "one" {
 
 resource "aws_eip_association" "myeip" {
   instance_id = aws_instance.web.id 
-  public_ip = aws_eip.one.id
+  allocation_id = aws_eip.one.id
 }
