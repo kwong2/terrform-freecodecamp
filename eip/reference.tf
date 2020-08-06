@@ -24,6 +24,6 @@ resource "aws_security_group" "group1"{
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = [aws_eip.one.public_ip]
+    cidr_blocks = ["${aws_eip.one.public_ip}/32"]
   }
 }
