@@ -15,3 +15,15 @@ resource "aws_eip_association" "myeip" {
   instance_id = aws_instance.web.id 
   allocation_id = aws_eip.one.id
 }
+
+resource "aws_security_group" "group1"{
+  name = "kevin-terraform-security-group"
+
+  ingress {
+    description = "TLS from VPC"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = [aws_eip.one.public_ip]
+  }
+}
