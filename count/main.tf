@@ -6,17 +6,8 @@ provider "aws" {
 resource "aws_instance" "web" {
   ami = "ami-07c8bc5c1ce9598c3"
   instance_type = "t2.micro"
-
+  count = 4
   tags = {
-      Name = "Kev's terraform test"
-  }
-}
-
-resource "aws_instance" "web2" {
-  ami = "ami-07c8bc5c1ce9598c3"
-  instance_type = "t2.micro"
-
-  tags = {
-      Name = "Kev's terraform test"
+      Name = "Kev's terraform test.${count.index}"
   }
 }
