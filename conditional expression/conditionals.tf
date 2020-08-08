@@ -15,10 +15,10 @@ resource "aws_instance" "dev" {
 }
 
 resource "aws_instance" "prod"{
-    ami = " ami-07c8bc5c1ce9598c3"
+    ami = "ami-07c8bc5c1ce9598c3"
     instance_type = "t2.medium"
 
-    count = var.istest == false ? 1 : 0
+    count = var.istest == false ? 6 : 0
     tags = {
         Name = "PROD"
     }
