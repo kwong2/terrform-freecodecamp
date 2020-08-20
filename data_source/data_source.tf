@@ -8,7 +8,7 @@ data "aws_ami" "app_ami" {
 
     filter {
         name = "name"
-        values = ["ubuntu*"]
+        values = ["amzn2-ami-hvm*"]
     }
 }
 
