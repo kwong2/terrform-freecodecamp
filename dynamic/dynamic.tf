@@ -14,11 +14,11 @@ resource "aws_security_group" "dynamicsg" {
 
     dynamic "ingress" {
         for_each = var.sg_ports
-        iterator = port
+        iterator = port_thing
 
         content {
-            from_port = port.value
-            to_port   = port.value
+            from_port = port_thing.value
+            to_port   = port_thing.value
             protocol  = "tcp"
             cidr_blocks = ["0.0.0.0/0"]
         }
