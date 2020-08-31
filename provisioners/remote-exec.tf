@@ -3,6 +3,8 @@ resource "aws_instance" "test" {
     instance_type = "t2.micro"
     key_name = "KevinTerraform"
 
+    security_groups = ["chworkspace"]
+
     tags = {
         Name = "Kevin_terraform_1"
     }

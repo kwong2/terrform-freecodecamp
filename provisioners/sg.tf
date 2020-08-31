@@ -19,6 +19,14 @@ resource "aws_security_group" "chworkspace" {
     cidr_blocks = ["52.2.120.210/32"]
   }
 
+ingress {
+    description = "HTTP"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["67.38.8.173/32"]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
