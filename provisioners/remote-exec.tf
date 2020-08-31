@@ -1,7 +1,7 @@
 resource "aws_instance" "test" {
     ami = "ami-02354e95b39ca8dec"
     instance_type = "t2.micro"
-    key_name = "Kevin-Terraform-Testing"
+    key_name = "KevinTerraform"
 
     tags = {
         Name = "Kevin_terraform_1"
@@ -15,10 +15,14 @@ resource "aws_instance" "test" {
         connection {
             type = "ssh"
             user = "ec2-user"
-            private_key = file("./Kevin-Terraform-Testing.pem")
+            private_key = file("./KevinTerraform.pem")
             host = self.public_ip
         }
 
     }
 }
 
+resource "aws_eip" "lb" {
+  instance = aws_instance.test.id
+  vpc      = true
+}
