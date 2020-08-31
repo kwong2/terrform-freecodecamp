@@ -27,6 +27,6 @@ resource "aws_security_group" "chworkspace" {
   }
 
   tags = {
-    Name = "chworkspaces"
+    Name = "chworkspace"
   }
 }
